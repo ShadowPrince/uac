@@ -1,11 +1,11 @@
 <?php
 /**
- * FShare
+ * Uac
  *
  * @author Vasiliy Horbachenko <shadow.prince@ya.ru>
  * @copyright 2013 Vasiliy Horbachenko
  * @version 1.0
- * @package FShare
+ * @package uac
  *
  */
 namespace Uac;
@@ -41,6 +41,7 @@ class UacService extends \SlimExt\SlimService {
 
     /**
      * Authenticate user with value from cookies
+     * @param \SlimExt\SlimExt
      */
     public function cookieLogin($app) {
         try {
@@ -58,9 +59,10 @@ class UacService extends \SlimExt\SlimService {
     }
 
     /**
-     * Add permission to uac system
+     * Register permission in uac system
+     * @param string
      */
-    public function addPermission($perm) {
+    public function registerPerm($perm) {
         $this->permissions[] = $perm;
     }
 

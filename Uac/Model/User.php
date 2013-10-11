@@ -1,11 +1,11 @@
 <?php
 /**
- * FShare
+ * Uac
  *
  * @author Vasiliy Horbachenko <shadow.prince@ya.ru>
  * @copyright 2013 Vasiliy Horbachenko
  * @version 1.0
- * @package FShare
+ * @package uac
  *
  */
 namespace Uac\Model;
@@ -26,6 +26,10 @@ class User extends \Autoparis\AutoModel {
     public static $profile_class = null;
     protected $perms_cache = null;
 
+    /*
+     * Get permissions array
+     * @return array
+     */
     public function perms() {
         if ($this->perms_cache !== null) {
             return $this->perms_cache;
@@ -39,6 +43,10 @@ class User extends \Autoparis\AutoModel {
         }
     }
 
+    /**
+     * Add permission
+     * @param string
+     */
     public function addPerm($perm) {
         if (array_search($perm, $this->perms()) === false) {
             $this->permissions = implode(":", array_merge($this->perms(), [$perm]));
@@ -47,6 +55,11 @@ class User extends \Autoparis\AutoModel {
         }
     }
 
+    /**
+     * Is user have $permission?
+     * @param string
+     * @return bool
+     */
     public function hasPermission($permission) {
         if (substr($permission, 0, 1) != ".")
             $permission = "." . $permission;
@@ -57,6 +70,9 @@ class User extends \Autoparis\AutoModel {
         }
     }
 
+    /*
+     * @return \Uac\Model\UserProfile
+     */
     public function profile() {
         return $this->foreign_key(self::$profile_class, "user_profile_id");
     }

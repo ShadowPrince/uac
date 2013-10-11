@@ -1,11 +1,11 @@
 <?php
 /**
- * FShare
+ * Uac
  *
  * @author Vasiliy Horbachenko <shadow.prince@ya.ru>
  * @copyright 2013 Vasiliy Horbachenko
  * @version 1.0
- * @package FShare
+ * @package uac
  *
  */
 namespace Uac\Model;
@@ -23,6 +23,9 @@ use \Autoparis\Id,
 class AuthSession extends \Autoparis\AutoModel {
     public static $_table = "auth_session";
 
+    /**
+     * @return \Uac\Model\User
+     */
     public function user() {
         return $this->foreign_key(__NAMESPACE__ . "\\User");
     }
