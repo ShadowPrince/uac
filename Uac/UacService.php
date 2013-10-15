@@ -71,7 +71,7 @@ class UacService extends \SlimExt\SlimService {
      * @return bool
      */
     public function logged() {
-        return $this->user !== false;
+        return (bool) $this->user;
     }
 
     /**
