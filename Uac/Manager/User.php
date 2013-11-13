@@ -169,7 +169,7 @@ class User {
         return md5(""
             . $user->username
             . ":"
-            . rand(100, 1000)
+            . implode("", array_map(function ($x) {return chr(rand(48, 122));}, range(0, 32)))
             . ":"
             . (new \DateTime())->getTimestamp()
             . ":"
