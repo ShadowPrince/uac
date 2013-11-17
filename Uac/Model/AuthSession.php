@@ -30,13 +30,14 @@ class AuthSession extends \Autoparis\AutoModel {
     }
 
     public function getFields() {
-        return [new Id(),
-            new Int("user_id", ["nn" => 1]),
-            new Varchar("identifier", 32, ["nn" => 1]),
+        return array(
+            new Id(),
+            new Int("user_id", array("nn" => 1)),
+            new Varchar("identifier", 32, array("nn" => 1)),
             new Varchar("ip", 96),
             new Text("ua"),
-            new DateTime("started", ["default" => "now"]),
-            new DateTime("updated", ["auto" => "now"]),
-        ];
+            new DateTime("started", array("default" => "now")),
+            new DateTime("updated", array("auto" => "now")),
+        );
     }
 }

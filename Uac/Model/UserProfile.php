@@ -20,9 +20,9 @@ class UserProfile extends \Autoparis\AutoModel {
     public static $_table = "user_profile";
 
     public function getFields() {
-        return [
+        return array(
             new Id(),
             new Text("bio"),
-        ];
+        );
     } 
 }

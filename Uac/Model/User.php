@@ -34,7 +34,7 @@ class User extends \Autoparis\AutoModel {
             return $this->perms_cache;
         } else {
             if (strlen($this->permissions) == 0)
-                $this->perms_cache = [];
+                $this->perms_cache = array();
             else
                 $this->perms_cache = explode(":", $this->permissions);
 
@@ -48,7 +48,7 @@ class User extends \Autoparis\AutoModel {
      */
     public function addPerm($perm) {
         if (array_search($perm, $this->perms()) === false) {
-            $this->permissions = implode(":", array_merge($this->perms(), [$perm]));
+            $this->permissions = implode(":", array_merge($this->perms(), array($perm)));
             $this->perms_cache = null;
             $this->perms();
         }
@@ -77,14 +77,14 @@ class User extends \Autoparis\AutoModel {
     }
 
     public function getFields() {
-        return [
+        return array(
             new Id(),
-            new Varchar("username", 32, ["nn" => 1]),
-            new Varchar("password", 32, ["nn" => 1]),
-            new Boolean("active", ["default" => true]),
+            new Varchar("username", 32, array("nn" => 1)),
+            new Varchar("password", 32, array("nn" => 1)),
+            new Boolean("active", array("default" => true)),
             new Text("permissions"),
-            new DateTime("joined", ["default" => "now"]),
+            new DateTime("joined", array("default" => "now")),
             new Int("user_profile_id"),
-        ];
+        );
     }
 }

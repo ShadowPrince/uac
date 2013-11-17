@@ -16,10 +16,10 @@ namespace Uac;
 class UacService extends \SlimExt\SlimService {
     protected $user = null;
     protected $cause = false;
-    protected $permissions = [];
+    protected $permissions = array();
 
     public function __construct($app) {
-        $this->defaultConfig($app, [
+        $this->defaultConfig($app, array(
             "uac.route_prefix" => "/uac/",
 
             "uac.session_live_time" => 7 * 24 * 60 * 60,
@@ -28,7 +28,7 @@ class UacService extends \SlimExt\SlimService {
 
             "uac.login_url" => "/uac/login/",
             "uac.profile_url" => "/uac/user/",
-        ]);
+        ));
 
         \Uac\Model\User::$profile_class = $app->getCC($app->config("uac.user_profile"));
         $app->view()->getTwig()->addExtension(new \Uac\UacTwigExtension($app));

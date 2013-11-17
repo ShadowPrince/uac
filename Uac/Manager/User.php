@@ -61,12 +61,12 @@ class User {
      * @param \Uac\Model\User
      */
     public static function installSession($app, $user) {
-        $session = $app->fc("Uac.AuthSession")->create([
+        $session = $app->fc("Uac.AuthSession")->create(array(
             "user_id" => $user->id,
             "identifier" => self::genSessionIdentifier($user, $app->config("secret")),
             "ip" => $app->request()->getIp(),
             "ua" => $app->request()->getUserAgent(),
-        ]);
+        ));
         $session->save();
 
         $app->setEncryptedCookie(
@@ -138,11 +138,11 @@ class User {
         $profile = $app->fc($app->config("uac.user_profile"))->create();
         $profile->save();
 
-        $user = $app->fc("Uac.User")->create([
+        $user = $app->fc("Uac.User")->create(array(
             "username" => $username,
             "password" => self::encryptPassword($password, $app->config('secret')),
             "user_profile_id" => $profile->id,
-        ]);
+        ));
 
         $user->save();
         return $user;
